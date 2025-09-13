@@ -5,7 +5,7 @@ All notable changes to the Palette Generator Master package will be documented i
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2024-12-19
+## [1.0.0] 
 
 ### Added
 - **Complete rewrite and enhancement** of the discontinued palette_generator package
@@ -112,3 +112,8 @@ This package is a complete rewrite and enhancement of the discontinued `palette_
 ---
 
 *This package continues the legacy of the original palette_generator with modern enhancements and new capabilities.*
+
+
+## 1.0.1
+
+* Fix pub point

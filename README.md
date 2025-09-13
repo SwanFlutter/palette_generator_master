@@ -41,7 +41,7 @@ Add this package to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  palette_generator_master: ^1.0.0
+  palette_generator_master: ^1.0.1
 ```
 
 Then run:

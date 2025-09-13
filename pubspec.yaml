@@ -1,6 +1,6 @@
 name: palette_generator_master
-description: A powerful Flutter package for extracting prominent colors from images with advanced features including multi-color space support, accessibility compliance, and color harmony generation.
-version: 1.0.0
+description: A powerful Flutter package for extracting prominent colors from images with advanced features and accessibility compliance.
+version: 1.0.1
 homepage: https://github.com/SwanFlutter/palette_generator_master
 repository: https://github.com/SwanFlutter/palette_generator_master
 issue_tracker: https://github.com/SwanFlutter/palette_generator_master/issues
