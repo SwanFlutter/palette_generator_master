@@ -203,7 +203,7 @@ class _ImagePaletteScreenState extends State<ImagePaletteScreen> {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
+                    color: Colors.black.withValues(alpha: 0.1),
                     blurRadius: 10,
                     offset: const Offset(0, 5),
                   ),
@@ -350,9 +350,9 @@ class _ImagePaletteScreenState extends State<ImagePaletteScreen> {
     final IsolateData data = params['data'];
 
     try {
-      print('🎨 شروع پردازش تصویر در Isolate...');
-      print('📏 ابعاد تصویر: ${data.width} x ${data.height}');
-      
+      // Debug: شروع پردازش تصویر در Isolate
+      // Debug: ابعاد تصویر: ${data.width} x ${data.height}
+
       // Create encoded image
       final encodedImage = EncodedImageMaster(
         data.imageBytes,
@@ -360,7 +360,7 @@ class _ImagePaletteScreenState extends State<ImagePaletteScreen> {
         height: data.height,
       );
 
-      print('🔍 استخراج رنگ‌ها با حداکثر 20 رنگ...');
+      // Debug: استخراج رنگ‌ها با حداکثر 20 رنگ
       // Generate palette with high precision
       final paletteGenerator = await PaletteGeneratorMaster.fromByteData(
         encodedImage,
@@ -376,16 +376,14 @@ class _ImagePaletteScreenState extends State<ImagePaletteScreen> {
       );
 
       // لاگ رنگ‌های غالب
-      print('\n🎯 رنگ‌های غالب استخراج شده:');
+      // Debug: رنگ‌های غالب استخراج شده:
       final paletteColors = paletteGenerator.paletteColors;
       for (int i = 0; i < paletteColors.length; i++) {
-        final color = paletteColors[i];
-        final hex = '#${color.color.value.toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}';
-        print('  ${i + 1}. $hex - تعداد پیکسل: ${color.population}');
+        // Debug: ${i + 1}. رنگ - تعداد پیکسل: ${paletteColors[i].population}
       }
 
       // لاگ رنگ‌های هدف
-      print('\n🎨 رنگ‌های هدف:');
+      // Debug: رنگ‌های هدف:
       final vibrant = paletteGenerator.vibrantColor;
       final lightVibrant = paletteGenerator.lightVibrantColor;
       final darkVibrant = paletteGenerator.darkVibrantColor;
@@ -394,34 +392,28 @@ class _ImagePaletteScreenState extends State<ImagePaletteScreen> {
       final darkMuted = paletteGenerator.darkMutedColor;
 
       if (vibrant != null) {
-        final hex = '#${vibrant.color.value.toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}';
-        print('  Vibrant: $hex');
+        // Debug: Vibrant color found
       }
       if (lightVibrant != null) {
-        final hex = '#${lightVibrant.color.value.toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}';
-        print('  Light Vibrant: $hex');
+        // Debug: Light Vibrant color found
       }
       if (darkVibrant != null) {
-        final hex = '#${darkVibrant.color.value.toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}';
-        print('  Dark Vibrant: $hex');
+        // Debug: Dark Vibrant color found
       }
       if (muted != null) {
-        final hex = '#${muted.color.value.toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}';
-        print('  Muted: $hex');
+        // Debug: Muted color found
       }
       if (lightMuted != null) {
-        final hex = '#${lightMuted.color.value.toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}';
-        print('  Light Muted: $hex');
+        // Debug: Light Muted color found
       }
       if (darkMuted != null) {
-        final hex = '#${darkMuted.color.value.toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}';
-        print('  Dark Muted: $hex');
+        // Debug: Dark Muted color found
       }
 
-      print('✅ پردازش کامل شد!');
+      // Debug: پردازش کامل شد!
       sendPort.send(paletteGenerator);
     } catch (e) {
-      print('❌ خطا در پردازش: $e');
+      // Debug: خطا در پردازش: $e
       sendPort.send('خطا در پردازش: $e');
     }
   }
@@ -481,7 +473,7 @@ class _ImagePaletteScreenState extends State<ImagePaletteScreen> {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 4,
             offset: const Offset(0, 2),
           ),
@@ -494,13 +486,13 @@ class _ImagePaletteScreenState extends State<ImagePaletteScreen> {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 4),
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.7),
+              color: Colors.black.withValues(alpha: 0.7),
               borderRadius: const BorderRadius.vertical(
                 bottom: Radius.circular(12),
               ),
             ),
             child: Text(
-              '#${color.value.toRadixString(16).substring(2).toUpperCase()}',
+              '#${color.toARGB32().toRadixString(16).substring(2).toUpperCase()}',
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.white,
@@ -557,7 +549,7 @@ class _ImagePaletteScreenState extends State<ImagePaletteScreen> {
                         style: const TextStyle(fontWeight: FontWeight.w500),
                       ),
                       Text(
-                        '#${target.$2!.value.toRadixString(16).substring(2).toUpperCase()}',
+                        '#${target.$2!.toARGB32().toRadixString(16).substring(2).toUpperCase()}',
                         style: TextStyle(
                           color: Colors.grey.shade600,
                           fontSize: 12,
@@ -593,7 +585,7 @@ class _ImagePaletteScreenState extends State<ImagePaletteScreen> {
           Text('تعداد کل رنگ‌ها: ${generator.colors.length}'),
           if (generator.dominantColor != null)
             Text(
-              'رنگ غالب: #${generator.dominantColor!.color.value.toRadixString(16).substring(2).toUpperCase()}',
+              'رنگ غالب: #${generator.dominantColor!.color.toARGB32().toRadixString(16).substring(2).toUpperCase()}',
             ),
           if (generator.sourceImageInfo != null) ...[
             Text(
@@ -645,7 +637,7 @@ class _ImagePaletteScreenState extends State<ImagePaletteScreen> {
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
+                        color: Colors.black.withValues(alpha: 0.2),
                         blurRadius: 20,
                         offset: const Offset(0, 10),
                       ),

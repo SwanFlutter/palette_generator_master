@@ -11,7 +11,7 @@ void main() {
         lightnessWeight: 0.3,
         populationWeight: 0.2,
       );
-      
+
       expect(target.saturationWeight, 0.5);
       expect(target.lightnessWeight, 0.3);
       expect(target.populationWeight, 0.2);
@@ -45,7 +45,7 @@ void main() {
       byteData.setUint8(1, 2);
       byteData.setUint8(2, 3);
       byteData.setUint8(3, 4);
-      
+
       final encodedImage = EncodedImageMaster(
         byteData,
         width: 100,

@@ -143,14 +143,14 @@ class _ImageColorsPageState extends State<ImageColorsPage>
 
     // Add some geometric shapes for more color variety
     final Paint shapePaint = Paint()
-      ..color = currentGradient.first.withOpacity(0.7);
+      ..color = currentGradient.first.withValues(alpha: 0.7);
     canvas.drawCircle(
       Offset(size.width * 0.3, size.height * 0.3),
       30,
       shapePaint,
     );
 
-    shapePaint.color = currentGradient.last.withOpacity(0.8);
+    shapePaint.color = currentGradient.last.withValues(alpha: 0.8);
     canvas.drawRect(
       Rect.fromLTWH(size.width * 0.6, size.height * 0.6, 40, 40),
       shapePaint,
@@ -540,7 +540,7 @@ class _ImageColorsPageState extends State<ImageColorsPage>
           border: Border.all(color: Colors.grey.shade300),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 4,
               offset: const Offset(0, 2),
             ),
@@ -563,7 +563,7 @@ class _ImageColorsPageState extends State<ImageColorsPage>
                 overflow: TextOverflow.ellipsis,
               ),
               Text(
-                '#${color.value.toRadixString(16).substring(2).toUpperCase()}',
+                '#${color.toARGB32().toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}',
                 style: TextStyle(
                   color: textColor,
                   fontSize: 10,
@@ -744,9 +744,11 @@ class _ImageColorsPageState extends State<ImageColorsPage>
             ),
             const SizedBox(height: 16),
             Text(
-              'Hex: #${color.value.toRadixString(16).substring(2).toUpperCase()}',
+              'Hex: #${color.toARGB32().toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}',
             ),
-            Text('RGB: ${color.red}, ${color.green}, ${color.blue}'),
+            Text(
+              'RGB: ${(color.r * 255.0).round()}, ${(color.g * 255.0).round()}, ${(color.b * 255.0).round()}',
+            ),
             Text(
               'HSL: ${(hslColor.hue).toStringAsFixed(0)}°, ${(hslColor.saturation * 100).toStringAsFixed(0)}%, ${(hslColor.lightness * 100).toStringAsFixed(0)}%',
             ),
@@ -759,7 +761,7 @@ class _ImageColorsPageState extends State<ImageColorsPage>
               Clipboard.setData(
                 ClipboardData(
                   text:
-                      '#${color.value.toRadixString(16).substring(2).toUpperCase()}',
+                      '#${color.toARGB32().toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}',
                 ),
               );
               Navigator.of(context).pop();

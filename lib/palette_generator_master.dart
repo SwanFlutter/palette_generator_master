@@ -417,8 +417,8 @@ class PaletteGeneratorMaster with Diagnosticable {
     properties.add(IterableProperty<PaletteTargetMaster>('targets', targets,
         defaultValue: PaletteTargetMaster.baseTargets));
     if (sourceImageInfo != null) {
-      properties.add(
-          DiagnosticsProperty<ImageInfoMaster>('sourceImageInfo', sourceImageInfo));
+      properties.add(DiagnosticsProperty<ImageInfoMaster>(
+          'sourceImageInfo', sourceImageInfo));
     }
   }
 }
@@ -484,7 +484,7 @@ class _ColorCutQuantizerMaster {
     final Map<int, int> colorCounts = <int, int>{};
     final ByteData pixels = encodedImage.byteData;
     final int pixelCount = encodedImage.pixelCount;
-    
+
     // Extract colors from image pixels
     for (int i = 0; i < pixelCount * 4; i += 4) {
       if (i + 3 < pixels.lengthInBytes) {
@@ -492,46 +492,46 @@ class _ColorCutQuantizerMaster {
         final int g = pixels.getUint8(i + 1);
         final int b = pixels.getUint8(i + 2);
         final int a = pixels.getUint8(i + 3);
-        
+
         // Skip transparent pixels
         if (a < 128) continue;
-        
+
         final int color = (0xFF << 24) | (r << 16) | (g << 8) | b;
         colorCounts[color] = (colorCounts[color] ?? 0) + 1;
       }
     }
-    
+
     // Convert to PaletteColorMaster list and sort by population
     final List<PaletteColorMaster> colors = colorCounts.entries
         .map((entry) => PaletteColorMaster(Color(entry.key), entry.value))
         .toList();
-    
+
     // Sort by population (most dominant first)
     colors.sort((a, b) => b.population.compareTo(a.population));
-    
+
     // Apply filters
     final List<PaletteColorMaster> filteredColors = [];
     for (final color in colors) {
       final HSLColor hslColor = HSLColor.fromColor(color.color);
       bool shouldInclude = true;
-      
+
       for (final filter in filters) {
         if (!filter(hslColor)) {
           shouldInclude = false;
           break;
         }
       }
-      
+
       if (shouldInclude) {
         filteredColors.add(color);
       }
-      
+
       // Limit to maxColors
       if (filteredColors.length >= maxColors) {
         break;
       }
     }
-    
+
     return filteredColors;
   }
 }
