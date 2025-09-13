@@ -3,7 +3,6 @@
 [![Pub Version](https://img.shields.io/pub/v/palette_generator_master.svg)](https://pub.dev/packages/palette_generator_master)
 [![Flutter](https://img.shields.io/badge/Flutter-3.22.0+-blue.svg)](https://flutter.dev/)
 [![Dart](https://img.shields.io/badge/Dart-3.4.0+-blue.svg)](https://dart.dev/)
-[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 A powerful Flutter package for extracting prominent colors from images with advanced features including multi-color space support, accessibility compliance, and color harmony generation.
 
@@ -415,37 +414,7 @@ A: Adjust the target parameters or use a custom `PaletteTargetMaster`.
 **Q: Accessibility pairs are empty**
 A: Lower the `minimumContrast` threshold or ensure your image has sufficient color variety.
 
-## 🤝 Contributing
 
-Contributions are welcome! Please read our contributing guidelines and submit pull requests to our repository.
-
-### Development Setup
-
-```bash
-git clone https://github.com/yourusername/palette_generator_master.git
-cd palette_generator_master
-flutter pub get
-flutter test
-```
-
-## 📄 License
-
-This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Original `palette_generator` package authors for the foundation
-- Flutter team for the excellent framework
-- Color science community for algorithms and research
-
-## 📚 Additional Resources
-
-- [Color Theory Basics](https://en.wikipedia.org/wiki/Color_theory)
-- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
-- [LAB Color Space](https://en.wikipedia.org/wiki/CIELAB_color_space)
-- [Flutter Color Documentation](https://api.flutter.dev/flutter/dart-ui/Color-class.html)
-
----
 
 **Made with ❤️ for the Flutter community**
 
