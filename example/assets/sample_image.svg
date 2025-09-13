@@ -1,0 +1,39 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#764ba2;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#f093fb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="circle-gradient-1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </radialGradient>
+    <radialGradient id="circle-gradient-2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#a8edea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fed6e3;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg-gradient)" />
+  
+  <!-- Colorful circles -->
+  <circle cx="80" cy="90" r="40" fill="url(#circle-gradient-1)" opacity="0.8" />
+  <circle cx="320" cy="60" r="35" fill="#00f2fe" opacity="0.7" />
+  <circle cx="280" cy="210" r="45" fill="url(#circle-gradient-2)" opacity="0.6" />
+  <circle cx="120" cy="240" r="30" fill="#fed6e3" opacity="0.8" />
+  
+  <!-- Geometric shapes -->
+  <rect x="40" y="150" width="60" height="40" fill="#ffecd2" opacity="0.9" rx="8" />
+  <rect x="240" y="120" width="50" height="35" fill="#fcb69f" opacity="0.8" rx="6" />
+  
+  <!-- Additional decorative elements -->
+  <polygon points="350,250 370,220 390,250 370,280" fill="#ff9a9e" opacity="0.7" />
+  <ellipse cx="60" cy="40" rx="25" ry="15" fill="#fad0c4" opacity="0.8" />
+  
+  <!-- Overlay patterns -->
+  <circle cx="200" cy="150" r="80" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.3" />
+  <circle cx="200" cy="150" r="60" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.2" />
+</svg>

@@ -1,0 +1,35 @@
+name: palette_generator_master
+description: A powerful Flutter package for extracting prominent colors from images with advanced features including multi-color space support, accessibility compliance, and color harmony generation.
+version: 1.0.0
+homepage: https://github.com/yourusername/palette_generator_master
+repository: https://github.com/yourusername/palette_generator_master
+issue_tracker: https://github.com/yourusername/palette_generator_master/issues
+documentation: https://github.com/yourusername/palette_generator_master#readme
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+  flutter: ">=3.22.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  collection: ^1.18.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+topics:
+  - color
+  - palette
+  - image
+  - accessibility
+  - ui
+  - design
+  - wcag
+  - harmony
+
+
+flutter:
+
